@@ -1,0 +1,22 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="static/posts.js" defer></script>
+    <title>Document</title>
+</head>
+<body>
+    <div style="display: flex; justify-self: center;">
+    <div style="margin: 0 auto;"><% posts.forEach((post) => {%>
+        <div class="post" style="max-width: 600px; max-height: 200px; background-color: aqua; border: 1px; margin: 10px; text-align: center;">
+            <h2 style="text-align: center;"><%= post.name %></h2>
+            <p style="text-align: center;"><%= post.author %></p>
+         
+        </div>
+        <%})%>
+        <button class = "button1" style="border: 5px;">post</button>
+    </div>
+    
+    </div>
+</body>
+</html>
