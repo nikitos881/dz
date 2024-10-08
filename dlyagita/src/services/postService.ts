@@ -1,6 +1,6 @@
 
 // константа с постами
-const posts = [
+const posts: {id: number, name: string, author: string, description: string, time: string}[] = [
     {
         id: 1,
         name: 'post1',
@@ -26,29 +26,31 @@ const posts = [
 
 
 // создание всех функций с сохранением контекста
-function getAllPosts (max) {
+function getAllPosts2 () {
     const context = {
-        posts:posts.slice(0, max)
+        posts:posts.slice(0)
     }
     return context
 }
-function getPostById (id) {
+function getPostById2 (id: number) {
     const context = {
         post:posts[id-1],
     }
     return context
 }
-function createPost(post) {
-    const post = req.body
+function createPost2(post: {id: number, name: string, author: string, description: string, time: string}) {
+    
     posts.push(post)
+    // posts.push({id: post.id, name: post.name, author: post.author, description: post.description, time: post.time})
 }
 
 // то что будет експортироваться
-module.exports = {
-    getAllPosts: getAllPosts, 
-    getPostById: getPostById,
-    createPost: createPost 
-}
+// module.exports = {
+//     getAllPosts: getAllPosts, 
+//     getPostById: getPostById,
+//     createPost: createPost 
+// }
+export {getAllPosts2, getPostById2, createPost2}
 
 
 

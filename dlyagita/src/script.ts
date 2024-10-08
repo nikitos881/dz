@@ -1,12 +1,16 @@
-var moment = require('moment')
-var express = require('express')
-const path = require("path")
+// var moment = require('moment')
+import moment from "moment"
+// var express = require('express')
+import express, { Express, Request, Response } from "express"
+// const path = require("path")
+import path from "path"
 
-const app = express()
-const postRouter = require("./routers/postRouter")
+const app: Express = express()
+// const postRouter = require("./routers/postRouter")
+import { postRouter } from "./routers/postRouter"
 
-const HOST = "localhost"
-const PORT = 8000
+const HOST: string = "localhost"
+const PORT: number = 8000
 app.use(express.json())
 moment().format()
 
@@ -20,7 +24,7 @@ function getDate(){
     console.log(moment().format('YYYY:DD:MM hh:mm:ss'))
 }
 
-function runFunc(func){
+function runFunc(func: () => {}){
     func()
 }
 
@@ -34,7 +38,7 @@ app.use("/post/", postRouter)
 //     res.send(moment().format('YYYY:DD:MM hh:mm:ss'))
 // })
 
-app.get('/', (req, res) => {
+app.get('/', (req: Request, res: Response) => {
     res.render("index")
 }) 
 
