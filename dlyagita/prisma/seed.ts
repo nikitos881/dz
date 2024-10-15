@@ -15,19 +15,17 @@ async function createPost(){
 }
 
 async function createPosts(){
-    const post = await prisma.post.create({
-        data: {
+    const post = await prisma.post.createMany({
+        data: [{
             name: 'post9',
             author: 'author9',
             time: '13:01'
-        }
-    })
-    await prisma.post.create({
-        data: {
+        },
+        {
             name: 'post10',
             author: 'author10',
             time: '13:02'
-        }})
+        }]})
     console.log(post)
 }
 
@@ -63,15 +61,18 @@ async function findPost() {
 }
 
 async function findPosts() {
-    const post = await prisma.post.findUnique({
+    const post = await prisma.post.findMany({
         where: {
-            id: 1
+            AND: [
+                {
+                    id: 1
+                },
+                {
+                    id: 2
+                }
+            ]
         }
-    })
-    await prisma.post.findUnique({
-        where: {
-            id: 2}
-        })
+    })  
     console.log(post)
 }
 
