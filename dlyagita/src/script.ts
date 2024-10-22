@@ -9,6 +9,7 @@ const app: Express = express()
 // const postRouter = require("./routers/postRouter")
 import { postRouter } from "./routers/postRouter"
 
+const SECRET_KEY: string = "rsa_nety"
 const HOST: string = "localhost"
 const PORT: number = 8000
 app.use(express.json())
