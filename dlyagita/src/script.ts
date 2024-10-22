@@ -7,7 +7,7 @@ import path from "path"
 
 const app: Express = express()
 // const postRouter = require("./routers/postRouter")
-import { postRouter } from "./routers/postRouter"
+import { postRouter } from "./PostApp/postRouter"
 
 const SECRET_KEY: string = "rsa_nety"
 const HOST: string = "localhost"

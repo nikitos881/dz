@@ -1,4 +1,5 @@
-
+import postRepository from "./postRepository"
+import getAllPosts from "./postRepository"
 // константа с постами
 const posts: {id: number, name: string, author: string, description: string, time: string}[] = [
     {
@@ -26,15 +27,17 @@ const posts: {id: number, name: string, author: string, description: string, tim
 
 
 // создание всех функций с сохранением контекста
-function getAllPosts2 () {
+async function getAllPosts2 (max?: number) {
     const context = {
-        posts:posts.slice(0)
+        // posts:posts.slice(0)
+        post: await postRepository.getAllPosts()
     }
     return context
 }
 function getPostById2 (id: number) {
     const context = {
         post:posts[id-1],
+        
     }
     return context
 }

@@ -1,14 +1,15 @@
-import { getAllPosts2, getPostById2, createPost2 } from "../services/postService"
+import { getAllPosts2, getPostById2, createPost2 } from './postService'
 // const postService = require('../services/postService') // импорт файла сервиса
 import { Request, Response } from "express"
 
 // создание функции
-function getAllPosts (req: Request, res: Response) {
+async function getAllPosts (req: Request, res: Response) {
     // const context = {
     //     // получение всех постов
     //     posts:posts.slice(0, req.query.max)
     // }
-    const context = getAllPosts2()
+    const context = await getAllPosts2(req.query.max ? +req.query.max : undefined)
+    // const context = getAllPosts2()
     res.render("posts", context)
 }
 function getPostById (req: Request, res: Response) {
