@@ -30,6 +30,7 @@ async function createComment(data: Prisma.CommentCreateInput){
     console.log(comment)
 }
 
+
 // поменять код при создании коментапп! 
 async function createComments(){
     const comment = await prisma.comment.createMany({
@@ -107,18 +108,5 @@ async function findPostIncludeCom() {
 
 
 
-async function main() {
-    // await createPost()
-    // await createPosts()
-    // await findPost()
-    // await findPosts()
-    // await updatePost()
-    // await deletePost()
-}
+export {createComment, createComments, deleteComment, updateComment, findComment, findCommentIncludePost, findPostIncludeCom}
 
-main().then(() => {
-    prisma.$disconnect()
-}).catch((err) => {
-    console.log(err)
-    prisma.$disconnect()
-})
