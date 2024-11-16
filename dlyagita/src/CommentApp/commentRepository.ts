@@ -1,5 +1,5 @@
 import { Prisma, PrismaClient } from '@prisma/client';
-
+import { client } from "../client/prismaClient"
 const prisma = new PrismaClient()
 
 
@@ -106,7 +106,28 @@ async function findPostIncludeCom() {
     console.log(post_comment)
 }
 
+// async function getAllComments() {
 
+// }
+async function getAllComments(max?: number){
+    try {
+        const comment = await client.comment.findMany()
+        return comment
+    }catch (err){
+        if (err instanceof Prisma.PrismaClientKnownRequestError){
+            if (err.code === "P2002"){
+                console.log(err.message)
+                throw err
+            }else if ( err.code === "P2015"){
+                console.log(err.message)
+                throw err
+            }else if ( err.code === "P2019"){
+                console.log(err.message)
+                throw err
+            }
+        }
+    }
+}
 
-export {createComment, createComments, deleteComment, updateComment, findComment, findCommentIncludePost, findPostIncludeCom}
+export {createComment, createComments, deleteComment, updateComment, findComment, findCommentIncludePost, findPostIncludeCom, getAllComments}
 

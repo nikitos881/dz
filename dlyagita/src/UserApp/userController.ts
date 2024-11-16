@@ -44,11 +44,12 @@ async function authRegisterUser(req:Request, res:Response){
     }
 }
 
-const userController={
-    loginUser,
-    authUser,
-    registerUser,
-    authRegisterUser
-}
+// const userController={
+//     loginUser,
+//     authUser,
+//     registerUser,
+//     authRegisterUser
+// }
 
-export default userController
+// export default userController
+export {loginUser, authUser, registerUser, authRegisterUser}

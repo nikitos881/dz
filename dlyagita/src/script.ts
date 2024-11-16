@@ -4,17 +4,19 @@ import moment from "moment"
 import express, { Express, Request, Response } from "express"
 // const path = require("path")
 import path from "path"
+import cookieParser from "cookie-parser"
 
 const app: Express = express()
 // const postRouter = require("./routers/postRouter")
 import { postRouter } from "./PostApp/postRouter"
+import userRouter from "./UserApp/userRouter"
 
 const SECRET_KEY: string = "rsa_nety"
 const HOST: string = "localhost"
 const PORT: number = 8000
 app.use(express.json())
+app.use(cookieParser())
 moment().format()
-
 
 
 
@@ -33,6 +35,7 @@ function runFunc(func: () => {}){
 app.use("/static/", express.static(path.resolve(__dirname, "./static")))
 
 app.use("/post/", postRouter)
+app.use("/", userRouter)
 
 // app.get("/date", (req, res) => {
 //     console.log("work")
