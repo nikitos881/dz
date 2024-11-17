@@ -1,4 +1,4 @@
-import { getAllComments } from "./commentRepository"
+import { getAllComments } from "./commentController"
 
 
 

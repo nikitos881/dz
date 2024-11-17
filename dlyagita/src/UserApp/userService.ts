@@ -8,7 +8,8 @@ interface IAuthOk{
         username: string,
         email: string,
         password: string,
-        role?: string
+        // role?: string
+        role: string | null
     }
 }
 
@@ -21,7 +22,7 @@ interface IUserData{
     username: string,
     email: string,
     password: string,
-    role: string
+    role: string 
 }
 
 
