@@ -14,6 +14,25 @@ interface ICommentOk{
     }
 }
 
+async function getAllComments(){
+    try {
+        const comment = await client.comment.findMany()
+        return comment
+    }catch (err){
+        if (err instanceof Prisma.PrismaClientKnownRequestError){
+            if (err.code === "P2002"){
+                console.log(err.message)
+                throw err
+            }else if ( err.code === "P2015"){
+                console.log(err.message)
+                throw err
+            }else if ( err.code === "P2019"){
+                console.log(err.message)
+                throw err
+            }
+        }
+    }
+}
 
 async function createComment(data: Prisma.CommentCreateInput){
     const comment = await prisma.comment.create({
@@ -73,13 +92,38 @@ async function updateComment() {
 
 }
 
-async function findComment() {
-    const comment = await prisma.comment.findUnique({
-        where: {
-            id: 1
+// async function findComment() {
+//     const comment = await prisma.comment.findUnique({
+//         where: {
+//             id: 1
+//         }
+//     })
+//     console.log(comment)
+// }
+
+async function findCommentById(id: number) {
+    try {
+        const comment = await prisma.comment.findUnique({
+            where: {
+                id: id
+            }
+        })
+        return comment
+    }catch (err){
+        if (err instanceof Prisma.PrismaClientKnownRequestError){
+            if (err.code === "P2002"){
+                console.log(err.message)
+                throw err
+            }else if ( err.code === "P2015"){
+                console.log(err.message)
+                throw err
+            }else if ( err.code === "P2019"){
+                console.log(err.message)
+                throw err
+            }
         }
-    })
-    console.log(comment)
+    }
+    
 }
 
 async function findCommentIncludePost() {
@@ -111,5 +155,5 @@ async function findPostIncludeCom() {
 // }
 
 
-export {createComment, createComments, deleteComment, updateComment, findComment, findCommentIncludePost, findPostIncludeCom}
+export {createComment, createComments, deleteComment, updateComment, findCommentById, findCommentIncludePost, findPostIncludeCom, getAllComments}
 
